@@ -1,1 +1,1 @@
-There will be our Sphinx game code - psychowico will fill this file later. test.
+There will be our Sphinx game code - psychowico will fill this file later.
