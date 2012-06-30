@@ -1,0 +1,1 @@
+Here should be all static files for documentation.
