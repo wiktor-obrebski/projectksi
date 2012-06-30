@@ -25,7 +25,7 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.viewcode']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.viewcode']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -40,8 +40,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Project Ksi'
-copyright = u'2012, Ksi team'
+project = 'Project Ksi'
+copyright = '2012, Ksi team'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -183,8 +183,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'ProjectKsi.tex', u'Project Ksi Documentation',
-   u'Ksi team', 'manual'),
+  ('index', 'ProjectKsi.tex', 'Project Ksi Documentation',
+   'Ksi team', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -213,8 +213,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'projectksi', u'Project Ksi Documentation',
-     [u'Ksi team'], 1)
+    ('index', 'projectksi', 'Project Ksi Documentation',
+     ['Ksi team'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -227,8 +227,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'ProjectKsi', u'Project Ksi Documentation',
-   u'Ksi team', 'ProjectKsi', 'One line description of project.',
+  ('index', 'ProjectKsi', 'Project Ksi Documentation',
+   'Ksi team', 'ProjectKsi', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -245,10 +245,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'Project Ksi'
-epub_author = u'Ksi team'
-epub_publisher = u'Ksi team'
-epub_copyright = u'2012, Ksi team'
+epub_title = 'Project Ksi'
+epub_author = 'Ksi team'
+epub_publisher = 'Ksi team'
+epub_copyright = '2012, Ksi team'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
