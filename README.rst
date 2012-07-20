@@ -4,11 +4,15 @@ projectksi README
 Getting Started
 ---------------
 
-First you need virtualenv package. Once the virtualenv package is installed in your Python,
-you can then create a virtual environment. To do so, invoke the following::
+I assume that you have *virtualenv* and *easy_install* installed in you Python.
+
+
+First you need use virtualenv package to create a virtual environment and install *pyramid* in it.
+To do so, invoke the following::
 
     $ virtualenv --no-site-packages {targetDirectoryName}
     cd {targetDirectoryName}
+    bin/easy_install pyramid
 
 Parameter *--no-site-packages* is deprecated and used as default in new version of *virtualenv*.
 Next you should clone project to this directory and run default setup.py file::
