@@ -4,11 +4,23 @@ projectksi README
 Getting Started
 ---------------
 
-- cd <directory containing this file>
+First you need virtualenv package. Once the virtualenv package is installed in your Python,
+you can then create a virtual environment. To do so, invoke the following:
 
-- $venv/bin/python setup.py develop
+    $ virtualenv --no-site-packages {targetDirectoryName}
 
-- $venv/bin/populate_projectksi development.ini
+Parameter *--no-site-packages* is deprecated and used as default in new version of *virtualenv*.
 
-- $venv/bin/pserve development.ini
+    cd {targetDirectoryName}
 
+Next you should clone project to this directory and run default setup.py file.
+
+    git clone https://github.com/psychowico/projectksi.git
+    cd projectksi
+    ../bin/python setup.py develop
+
+Project is ready to go. When you want run it in development mode try:
+
+    ../bin/pserve development.ini
+
+and check *localhost:6543* address.
