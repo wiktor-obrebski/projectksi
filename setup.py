@@ -30,10 +30,10 @@ setup(name='projectksi',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
-      install_requires=requires,
       dependency_links = [
-          'https://github.com/psychowico/pyramid_viewscomposer/tarball/master'
+          'https://github.com/psychowico/pyramid_viewscomposer/tarball/master#egg=pyramid_viewscomposer'
       ],
+      install_requires=requires,
       tests_require=requires,
       test_suite="projectksi",
       entry_points = """\
