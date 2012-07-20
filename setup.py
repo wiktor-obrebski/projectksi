@@ -8,16 +8,12 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
     'pyramid',
-    'SQLAlchemy',
-    'transaction',
-    'pyramid_tm',
     'pyramid_debugtoolbar',
-    'zope.sqlalchemy',
     'waitress',
     ]
 
 setup(name='projectksi',
-      version='0.01',
+      version='0.0',
       description='projectksi',
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[
@@ -29,20 +25,19 @@ setup(name='projectksi',
       author='',
       author_email='',
       url='',
-      keywords='web wsgi bfg pylons pyramid',
+      keywords='web pyramid pylons',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
-      test_suite='projectksi',
       install_requires=requires,
       dependency_links = [
           'https://github.com/psychowico/pyramid_viewscomposer/tarball/master'
       ],
-      entry_points="""\
+      tests_require=requires,
+      test_suite="projectksi",
+      entry_points = """\
       [paste.app_factory]
       main = projectksi:main
-      [console_scripts]
-      initialize_projectksi_db = projectksi.scripts.initializedb:main
       """,
       )
 
