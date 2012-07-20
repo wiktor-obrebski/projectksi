@@ -7,12 +7,11 @@ Getting Started
 I assume that you have *virtualenv* and *easy_install* installed in you Python.
 
 
-First you need use virtualenv package to create a virtual environment and install *pyramid* in it.
+First you need use virtualenv package to create a virtual environment.
 To do so, invoke the following::
 
     $ virtualenv --no-site-packages {targetDirectoryName}
     cd {targetDirectoryName}
-    bin/easy_install pyramid
 
 Parameter *--no-site-packages* is deprecated and used as default in new version of *virtualenv*.
 Next you should clone project to this directory and run default setup.py file::
