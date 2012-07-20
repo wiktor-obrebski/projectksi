@@ -13,11 +13,11 @@ Parameter *--no-site-packages* is deprecated and used as default in new version 
 
     cd {targetDirectoryName}
 
-Next you should clone project to this directory and run default setup.py file.
+Next you should clone project to this directory and run default setup.py file::
 
-    git clone https://github.com/psychowico/projectksi.git
-    cd projectksi
-    ../bin/python setup.py develop
+        git clone https://github.com/psychowico/projectksi.git
+        cd projectksi
+        ../bin/python setup.py develop
 
 Project is ready to go. When you want run it in development mode try:
 
