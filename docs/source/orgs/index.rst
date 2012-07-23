@@ -17,7 +17,11 @@ Domena
 ======
 
 Na potrzebuje deweloperskie została wykupiona domena `projectksi.com <http://projectksi.com>`_. Aktualnie można na niej
-znaleźć tą dokumentację - pod adresem http://docs.projectksi.com/.
+znaleźć tą dokumentację - pod adresem http://docs.projectksi.com/. W sprawach związanych z domeną należy kontaktować się
+z psychowico pod adresem psychowico@projectksi.com, lub psychowico@gmail.com.
+
+
+Domena, jak i nazwa projektu są w wersji roboczej i zostaną zmienione przed wydaniem gry.
 
 Narzędzia
 =========
@@ -28,6 +32,8 @@ jakie to narzędzia i jak z nich korzystać (w kontekście naszego projektu):
 * github_
 * `kanał irc`_
 * dokumentacja_
+* raportowanie_
+* forum_
 
 github
 ------
@@ -58,3 +64,17 @@ usługę ReadTheDocs_ i dostępna pod adresem http://docs.projectksi.com.
 
 .. _Sphinx: http://sphinx.pocoo.org/
 .. _ReadTheDocs: http://readthedocs.org/
+
+raportowanie
+------------
+Raporty ze spotkań, researchów i ważnych decyzji przechowujemy na `google drive`_. Dokumenty tworzy na własnym dysku
+google, potem udostępniamy je dla grupy `projectksi@googlegroups.com` z prawami do komentowania. Jeśli pojawi się nowa
+osoba potrzebująca uprawnień do tych danych, wystarczy, że dodamy ją do tej grupy mailingowej.
+
+.. _`google drive`: https://drive.google.com
+
+forum
+-----
+
+Niektóre dłużej ciągnące się dyskusje będą prowadzone na naszym forum, aktualnie dostępnym pod
+adresem http://314es.pl/forum.

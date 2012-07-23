@@ -13,6 +13,7 @@ Contents:
 
     about
     orgs/index
+    contact
 
 
 Indices and tables
