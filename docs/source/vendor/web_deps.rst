@@ -1,3 +1,5 @@
+.. _web-deps:
+
 WebDeps
 =========
 
