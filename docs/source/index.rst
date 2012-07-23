@@ -9,10 +9,10 @@ Welcome to Project Ksi's documentation!
 Contents:
 
 .. toctree::
+    :maxdepth: 2
+
     about
-
-
-
+    orgs/index
 
 
 Indices and tables
