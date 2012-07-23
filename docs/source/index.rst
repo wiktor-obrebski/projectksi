@@ -13,7 +13,7 @@ Contents:
 
     about
     orgs/index
-    progs/technologies
+    progs/programming
     contact
 
 
