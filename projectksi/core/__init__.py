@@ -21,16 +21,15 @@ class WebDeps(web_deps.WebDeps):
             return pd
         return factory
 
-def initialize_web_deps(event):
+def initialize_web_deps(url_choice):
     """ *initialize_web_deps* method initialize all css, less and js dependency list,
     depending on *web_deps.url_choice* setting. it return PageDeps object, that should
     be used to register specific dependency in specific views.
     """
-    choice = event.request.registry.settings.get('web_deps.url_choice', 'prod')
 
     # Pass a url_provider callable to the WebDeps constructor
     def url_provider(resource):
-        return getattr(resource, choice, None) or resource.url
+        return getattr(resource, url_choice, None) or resource.url
 
     deps = WebDeps(url_provider=url_provider)
 
@@ -46,11 +45,9 @@ def initialize_web_deps(event):
     deps.css('bootstrap', develop="/static/css/bootstrap.css", production="/static/css/bootstrap.min.css")
     deps.css('bootstrap-responsive', develop="/static/css/bootstrap-responsive.css",
              production="/static/css/bootstrap-responsive.min.css")
-
     PageDeps = deps.close()
-
-    return PageDeps()
+    return PageDeps
 
 @subscriber(INewRequest)
 def new_requst(event):
-    event.request.deps = initialize_web_deps(event)
+    event.request.deps = event.request.registry.PageDeps()
