@@ -5,6 +5,7 @@ from projectksi.core.vendor.bag import web_deps
 class WebDeps(web_deps.WebDeps):
     """ Override default WebDeps object, to add supporting
     for LESS link rel.
+
     """
     def __init__(self, url_provider=lambda resource: resource.url):
         super(WebDeps, self).__init__(url_provider=url_provider)

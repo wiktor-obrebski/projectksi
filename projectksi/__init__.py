@@ -3,6 +3,7 @@ from projectksi import core
 
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
+
     """
     config = Configurator(settings=settings)
 
