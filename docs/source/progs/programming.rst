@@ -71,15 +71,16 @@ LESS
 
 Like in description - this give us language that can generate css in nice way, instead of writing it all static.
 It give our many benefits, their documentation_ describe this nice.
+You can check *static/css/projectksi.less* file, there is all our LESS code for now. This file is including to
+templates by *WebDeps*.
 
 .. _documentation: http://lesscss.org/
 
 WebDeps
 -------
 
-WebDeps is a Python library writed by *Nando Florestan*. It help us managing js, css and less libraries. On our site
-you can found :ref:`compiled documentation <web-deps>` for it.
-
+WebDeps is a Python library writed by *Nando Florestan*. It help us managing js, css and less libraries.
+On our site you can found :ref:`compiled documentation <web-deps>` for it.
 
 
 pyramid_viewscomposer
