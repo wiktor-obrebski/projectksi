@@ -1,4 +1,5 @@
 .idea
+.ropeproject
 __pycache__
 *.py[cod]
 
