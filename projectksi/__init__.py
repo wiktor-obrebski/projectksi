@@ -1,5 +1,5 @@
 from pyramid.config import Configurator
-from projectksi import core
+from projectksi.core import webdeps_extend
 from projectksi.core import jinja2_extend
 
 def main(global_config, **settings):
@@ -21,7 +21,7 @@ def init_webdeps(config):
     inside specific template.
     """
     url_choice = config.registry.settings.get('web_deps.url_choice', 'production')
-    PageDeps = core.initialize_web_deps(url_choice)
+    PageDeps = webdeps_extend.initialize_web_deps(url_choice)
     config.registry.PageDeps = PageDeps
 
     jinja_env = config.get_jinja2_environment()
