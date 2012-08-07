@@ -31,7 +31,7 @@ def initialize_web_deps(url_choice):
 
     deps = WebDeps(url_provider=url_provider)
 
-    #css dependencies
+    #js dependencies
     deps.lib('less', url="/static/js/less-1.3.0.min.js")
     deps.lib('jquery', develop="/static/js/jquery-1.7.2.js", production="/static/js/jquery-1.7.2.min.js")
     deps.lib('bootstrap', develop="/static/js/bootstrap.js", production="/static/js/bootstrap.min.js")

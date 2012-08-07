@@ -29,15 +29,21 @@ setup(name='projectksi',
       ],
       install_requires=[
           'pyramid',
+          'pyramid_tm',
+          'SQLAlchemy >= 0.7.8',
+          'zope.sqlalchemy',
           'pyramid_jinja2',
           'pyramid_debugtoolbar',
           'pyramid_viewscomposer',
           'waitress',
           'six'
       ],
-      #I not stored this list in variable, because PyCharm don't see dependencies in this situation
+      #I'm not stored this list in variable, because PyCharm IDE don't see dependencies in this situation (genius)
       tests_require=[
           'pyramid',
+          'pyramid_tm',
+          'SQLAlchemy >= 0.7.8',
+          'zope.sqlalchemy',
           'pyramid_jinja2',
           'pyramid_debugtoolbar',
           'pyramid_viewscomposer',
