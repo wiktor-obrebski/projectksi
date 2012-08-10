@@ -103,3 +103,50 @@ We use it only in developing time. It is standard for pyramid developing, you ca
  in `pyramid framework docs`_.
 
  .. _`pyramid framework docs`: http://docs.pylonsproject.org/projects/pyramid_debugtoolbar/en/latest/
+
+How to
+======
+
+Add css, js or less library to template
+---------------------------------------
+
+First you need to make sure, that library what you need is included in *core/webdeps_extend.py* list, in
+"definitions" variable. If not, you should extend it. Let assume that you want add *"super.plugin.js"* library
+to you template and you added this file to our */static/js* directory.
+
+.. code-block:: python
+
+    definitions = {
+        'js'    :   {
+            'less'      : '/static/js/less-1.3.0.min.js',
+            'jquery'    : ('/static/js/jquery-1.7.2.js', '/static/js/jquery-1.7.2.min.js'),
+            'bootstrap' : ('/static/js/bootstrap.js', '/static/js/bootstrap.min.js'),
+            #here we added our code
+            'super-plugin' : '/static/js/super.plugin.js',
+        },
+        'less'  :   {
+            'projectksi': 'static/css/projectksi.less'
+        },
+        'css'   :   {
+            'bootstrap' : ('/static/css/bootstrap.css', '/static/css/bootstrap.min.css'),
+            'bootstrap-responsive' : ('/static/css/bootstrap-responsive.css', '/static/css/bootstrap-responsive.min.css')
+        }
+    }
+
+Like you can see, I called our library 'super-plugin'. This name is my random idea, it can be called in any way,
+you will use this unique name later, in you template. Now you should restart you server, if it is running.
+
+Next you should open you template file and add line:
+
+.. code-block:: python
+
+    {{ include_js('super-plugin') }}
+
+You must use one of three function: *include_js*, *include_css*, *include_less*. You can write few libraries keys,
+after comma:
+
+.. code-block:: python
+
+    {{ include_js('super-plugin, jquery, bootstrap') }}
+
+All css and less files will be added in site header - , all js files - in footer, to make site render faster.

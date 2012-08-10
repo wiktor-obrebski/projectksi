@@ -1,5 +1,20 @@
 from projectksi.core.vendor.bag import web_deps
 
+definitions = {
+    'js'    :   {
+        'less'      : '/static/js/less-1.3.0.min.js',
+        'jquery'    : ('/static/js/jquery-1.7.2.js', '/static/js/jquery-1.7.2.min.js'),
+        'bootstrap' : ('/static/js/bootstrap.js', '/static/js/bootstrap.min.js')
+    },
+    'less'  :   {
+        'projectksi': 'static/css/projectksi.less'
+    },
+    'css'   :   {
+        'bootstrap' : ('/static/css/bootstrap.css', '/static/css/bootstrap.min.css'),
+        'bootstrap-responsive' : ('/static/css/bootstrap-responsive.css', '/static/css/bootstrap-responsive.min.css')
+    }
+}
+
 class WebDeps(web_deps.WebDeps):
     """ Override default WebDeps object, to add supporting
     for LESS link rel.
@@ -31,17 +46,19 @@ def initialize_web_deps(url_choice):
 
     deps = WebDeps(url_provider=url_provider)
 
+    def load_deps(dep_type,callback):
+        for name, value in definitions[dep_type].items():
+            if type(value) is str:
+                callback(name, url=value)
+            else:
+                callback(name, develop=value[0], production=value[1])
+
     #js dependencies
-    deps.lib('less', url="/static/js/less-1.3.0.min.js")
-    deps.lib('jquery', develop="/static/js/jquery-1.7.2.js", production="/static/js/jquery-1.7.2.min.js")
-    deps.lib('bootstrap', develop="/static/js/bootstrap.js", production="/static/js/bootstrap.min.js")
-
+    load_deps('js', deps.lib)
     #less dependencies
-    deps.less('projectksi', url='static/css/projectksi.less')
-
+    load_deps('less', deps.less)
     #css dependencies
-    deps.css('bootstrap', develop="/static/css/bootstrap.css", production="/static/css/bootstrap.min.css")
-    deps.css('bootstrap-responsive', develop="/static/css/bootstrap-responsive.css",
-             production="/static/css/bootstrap-responsive.min.css")
+    load_deps('css', deps.css)
+
     PageDeps = deps.close()
     return PageDeps
