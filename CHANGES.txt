@@ -1,4 +1,10 @@
 0.0
 ---
 
--  Initial version
+-   Initial version
+-   base pyramid configuration
+-   sqlalchemy support
+-   webdeps libraries included (extended version with LESS support)
+-   jinja2 template system initialized
+-   bootstrap, less, jquery libraries included
+-   preparing base documentation

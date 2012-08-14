@@ -3,6 +3,7 @@
 .ropeproject
 __pycache__
 *.py[cod]
+todo.txt
 
 # C extensions
 *.so
