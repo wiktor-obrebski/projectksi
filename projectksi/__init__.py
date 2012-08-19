@@ -1,11 +1,15 @@
 from pyramid.config import Configurator
 from projectksi.core import webdeps_extend
 from projectksi.core import jinja2_extend
+from sqlalchemy import engine_from_config
+from projectksi.models.tables import DBSession
 
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
     config = Configurator(settings=settings)
+    engine = engine_from_config(settings, 'sqlalchemy.')
+    DBSession.configure(bind=engine)
 
     init_webdeps(config)
 

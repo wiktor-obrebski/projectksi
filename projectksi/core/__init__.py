@@ -1,7 +1,7 @@
 from pyramid.events import subscriber
-from pyramid.interfaces import INewRequest
+from pyramid import interfaces
+import transaction
 
-
-@subscriber(INewRequest)
+@subscriber(interfaces.INewRequest)
 def new_requst(event):
     event.request.deps = event.request.registry.PageDeps()

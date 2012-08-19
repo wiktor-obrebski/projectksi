@@ -26,11 +26,15 @@ setup(name='projectksi',
       zip_safe=False,
       dependency_links = [
           'https://github.com/psychowico/pyramid_viewscomposer/tarball/master#egg=pyramid_viewscomposer',
+          #oursql for python 3 version
+          'https://launchpad.net/oursql/py3k/py3k-0.9.3/+download/oursql-0.9.3.zip#egg=oursql',
       ],
       install_requires=[
           'pyramid',
           'pyramid_tm',
           'SQLAlchemy >= 0.7.8',
+          #mysql driver
+          'oursql',
           'zope.sqlalchemy',
           'pyramid_jinja2',
           'pyramid_debugtoolbar',
@@ -43,6 +47,7 @@ setup(name='projectksi',
           'pyramid',
           'pyramid_tm',
           'SQLAlchemy >= 0.7.8',
+          'oursql',
           'zope.sqlalchemy',
           'pyramid_jinja2',
           'pyramid_debugtoolbar',
