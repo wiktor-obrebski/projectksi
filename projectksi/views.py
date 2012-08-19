@@ -5,7 +5,8 @@ import logging
 
 @view_config(route_name='home', renderer='test_template.jinja2')
 def my_view(request):
-    user = DBSession.query(tables.User).first()
-    val = user.email if user else 'empty database'
+    char = DBSession.query(tables.Character).first()
+    val = char.user
+    #val = user.characters if user.characters else 'empty database'
 
     return {'project':val}
