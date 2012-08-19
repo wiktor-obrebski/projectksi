@@ -34,7 +34,7 @@ setup(name='projectksi',
           'pyramid_tm',
           'SQLAlchemy >= 0.7.8',
           #mysql driver
-          'oursql == 0.9.3',,
+          'oursql == 0.9.3',
           'zope.sqlalchemy',
           'pyramid_jinja2',
           'pyramid_debugtoolbar',
