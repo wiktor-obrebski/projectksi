@@ -18,6 +18,7 @@ To now we use in code following technologies:
 * WebDeps_
 * pyramid_viewscomposer_
 * pyramid_debugtoolbar_
+* sqlalchemy_
 
 Pyramid
 -------
@@ -103,6 +104,33 @@ We use it only in developing time. It is standard for pyramid developing, you ca
  in `pyramid framework docs`_.
 
  .. _`pyramid framework docs`: http://docs.pylonsproject.org/projects/pyramid_debugtoolbar/en/latest/
+
+sqlalchemy
+--------------------
+
+.. note::
+    SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.
+
+Most popular ORM for python developers. We use it in rather default way. Engine object is created from config file,
+in our program *main* method, session are prepared in *projectksi.models.tables* submodule.
+
+.. code-block: python
+
+    DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
+
+We use *ZopeTransactionExtension* for support to automatic transaction system. With this extension we do not need
+commit our transactions after proper request, and aborts them in error case - this will be provided by system.
+*scoped_session* making working with session in our application easier - you can read more about this
+at `sqlalchemy docs site`_.
+
+By default we use oursql_ driver for sqlalchemy, in version p3k (with python 3 support). To change this look
+to you config file:
+
+    *sqlalchemy.url = mysql+oursql://root:root@localhost:3306/ksi.test*
+
+.. _`sqlalchemy docs site`: http://docs.sqlalchemy.org/en/rel_0_7/orm/session.html#sqlalchemy.orm.scoping.ScopedSession
+.. _oursql: http://packages.python.org/oursql/
+
 
 How to
 ======
