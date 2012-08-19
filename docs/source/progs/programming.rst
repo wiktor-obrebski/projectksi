@@ -178,3 +178,24 @@ after comma:
     {{ include_js('super-plugin, jquery, bootstrap') }}
 
 All css and less files will be added in site header - , all js files - in footer, to make site render faster.
+
+Fetching data from database in your views
+-----------------------------------------
+
+You need simple import *DBSession* object from *projectksi.models.tables* and use it in standard, sqlalchemy, way.
+All sqlalchemy models you will find in *projectksi.models* package.
+
+.. code-block:: python
+
+    ...
+    from projectksi.models.tables import DBSession
+
+    @view_config(route_name='home', renderer='test.jinja2')
+    def my_view(request):
+        user = DBSession.query(tables.User).first()
+        val = user.email if user else 'empty database'
+        return {'email':val}
+
+If you need learn about working with sqlalchemy `try check this tutorial`_.
+
+.. _`try check this tutorial`: http://docs.sqlalchemy.org/en/rel_0_7/orm/tutorial.html
