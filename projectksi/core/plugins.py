@@ -1,15 +1,18 @@
 import inspect
 from importlib import import_module
+import collections
 
 class ServiceLocator(object):
     """ Simple implementation of ServiceLocator pattern.
     """
     services = None
     aliases = None
+    stored_results = None
 
     def __init__(self):
         self.services = {}
         self.aliases = {}
+        self.stored_results = {}
 
     def _resolve_to_key(self, key_or_alias):
         while key_or_alias in self.aliases:
@@ -22,18 +25,32 @@ class ServiceLocator(object):
 
     def get(self, key_or_alias):
         key = self._resolve_to_key(key_or_alias)
-        assert not key in self.services, "Service %s not found!" % key_or_alias
+        if not key in self.services:
+            raise KeyError("Service %s not found!" % key_or_alias)
+        if key not in self.stored_results:
+            self.stored_results[key] = self.services[key]()
+        return self.stored_results[key]
 
     def set(self, key, service, can_override = False):
-        assert can_override or key not in self.services, "Service %s exists, you can not override it!" % key
-        assert key not in self.aliases, ("Alias with key '%s' exists, "
-                                        "you can not create service with this name!") % key
+        if len(key) == 0:
+            raise NameError("Value key can not be empty!")
+        if not isinstance(service, collections.Callable):
+            raise ValueError("Argument service must be callable value (key '%s'." % key)
+        if not can_override and key in self.services:
+            raise KeyError("Service %s exists, you can not override it!" % key)
+        if key in self.aliases:
+            raise KeyError("Alias with key '%s' exists, "
+                           "you can not create service with this name!" % key)
         self.services[key] = service
 
     def create_alias(self, alias, key_or_alias):
-        assert (key_or_alias not in self.services and
-                key_or_alias not in self.aliases), "Alias or service with name '%s' already exists!"
-        pass
+        if len(alias) == 0:
+            raise NameError("Value alias can not be empty!")
+        if alias in self.services or alias in self.aliases:
+            raise KeyError("Alias or service with name '%s' already exists!" % alias)
+        if key_or_alias not in self.services and key_or_alias not in self.aliases:
+            raise KeyError("Service '%s' not found!" % alias)
+        self.aliases[alias] = key_or_alias
 
 class PluginAbstract(object):
     """ Base class that should be implemented in all plugins added to game. It is
