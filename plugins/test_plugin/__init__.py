@@ -25,6 +25,17 @@ class Plugin(plugins.PluginAbstract):
     def description(self):
         return 'Sample plugin created for tests'
 
+    def depending(self):
+        """ tuple of unique_name without which this particular plugin can not working
+        """
+        return ()
+
+    def services_depending(self):
+        """ tuple of service keys without which this particular plugin can not working.
+        this will be visible for debug purposes.
+        """
+        return ('non-exist-service1', 'non-exist-service2')
+
     instances = 0
     def test_message_service(self):
         class SampleService(object):

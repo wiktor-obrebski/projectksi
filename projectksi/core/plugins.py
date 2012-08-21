@@ -76,6 +76,17 @@ class PluginAbstract(object):
         """
         return self.readable_name()
 
+    def depending(self):
+        """ tuple of unique_name without which this particular plugin can not working
+        """
+        return ()
+
+    def services_depending(self):
+        """ tuple of service keys without which this particular plugin can not working.
+        this will be visible for debug purposes.
+        """
+        return ()
+
     def description(self):
         """ Plugin description, should have human readable info about what exacly this plugin divmod
         """
@@ -136,6 +147,8 @@ class PluginsManager(object):
                                  type_name='projectksi plugin')
             intr['name'] = plugin_name
             intr['description'] = plugin.description()
+            intr['dependent on plugins'] = plugin.depending()
+            intr['dependent on services'] = plugin.services_depending()
 
             introspectables.append(intr)
 
