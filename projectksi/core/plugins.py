@@ -1,6 +1,40 @@
 import inspect
 from importlib import import_module
 
+class ServiceLocator(object):
+    """ Simple implementation of ServiceLocator pattern.
+    """
+    services = None
+    aliases = None
+
+    def __init__(self):
+        self.services = {}
+        self.aliases = {}
+
+    def _resolve_to_key(self, key_or_alias):
+        while key_or_alias in self.aliases:
+            key_or_alias = self.aliases[key_or_alias]
+        return key_or_alias
+
+    def has(self, key_or_alias):
+        key = self._resolve_to_key(key_or_alias)
+        return key in self.services
+
+    def get(self, key_or_alias):
+        key = self._resolve_to_key(key_or_alias)
+        assert not key in self.services, "Service %s not found!" % key_or_alias
+
+    def set(self, key, service, can_override = False):
+        assert can_override or key not in self.services, "Service %s exists, you can not override it!" % key
+        assert key not in self.aliases, ("Alias with key '%s' exists, "
+                                        "you can not create service with this name!") % key
+        self.services[key] = service
+
+    def create_alias(self, alias, key_or_alias):
+        assert (key_or_alias not in self.services and
+                key_or_alias not in self.aliases), "Alias or service with name '%s' already exists!"
+        pass
+
 class PluginAbstract(object):
     """ Base class that should be implemented in all plugins added to game. It is
     provided few methods and information that give our more control for plugins management.
