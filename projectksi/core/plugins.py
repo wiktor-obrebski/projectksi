@@ -26,8 +26,13 @@ class PluginAbstract(object):
         """
         raise NotImplementedError()
 
-    def __call__(self,config):
-        print(self.name())
+    def includeme(self,config):
+        """ This method will be called by PluginsManager as end of loading plugin. It provid "config"
+        object for plugin, so it can register his own views and make any configuration (you should check
+        pyramid documentation for more info). Do not forgot about calling *config.scan()* at end of this
+        method if you want you plugin to have *declarative* based views support.
+        """
+        raise NotImplementedError()
 
 class PluginsManager(object):
     plugins={}
@@ -42,7 +47,8 @@ class PluginsManager(object):
         If it exist, it should contains plugins list that will be treated as
         projectksi plugins plugins. Method will be looking for class derived
         from "PluginAbstract" class, if it will not found it, exception will be
-        raised.
+        raised. For all founded plugins it will register introspectable in
+        "projectksi plugins" group and run "includeme" plugin method.
         """
         plugins = {}
         introspectables = []
@@ -73,6 +79,8 @@ class PluginsManager(object):
             intr['description'] = plugin.description()
 
             introspectables.append(intr)
+
+            plugin.includeme(config)
 
         config.action('apply_plugins', self._apply_plugins, args=(config, plugins),
                       introspectables=introspectables)
