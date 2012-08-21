@@ -3,7 +3,9 @@ from importlib import import_module
 import collections
 
 class ServiceLocator(object):
-    """ Simple implementation of ServiceLocator pattern.
+    """ Simple implementation of ServiceLocator pattern. It provide minimalistic
+    functionality to fetching and storing services + *create_alias* method for create
+    services aliases.
     """
     services = None
     aliases = None
@@ -57,6 +59,8 @@ class PluginAbstract(object):
     provided few methods and information that give our more control for plugins management.
     """
 
+    service_locator = None
+
     def unique_name(self):
         """ Plugin base name
         """
@@ -77,19 +81,23 @@ class PluginAbstract(object):
         """
         raise NotImplementedError()
 
-    def includeme(self,config):
+    def includeme(self, config, service_locator):
         """ This method will be called by PluginsManager as end of loading plugin. It provid "config"
         object for plugin, so it can register his own views and make any configuration (you should check
         pyramid documentation for more info). Do not forgot about calling *config.scan()* at end of this
-        method if you want you plugin to have *declarative* based views support.
+        method if you want you plugin to have *declarative* based views support. Additionally it provide
+        access to service_locator object, responsible for plugins communications.
         """
         raise NotImplementedError()
 
 class PluginsManager(object):
-    plugins={}
+    plugins = None
+    service_locator = None
 
     def __init__(self, config):
         self.config = config
+        self.plugins = {}
+        self.service_locator = ServiceLocator()
         self._register_plugins(config)
         #config.action('register_plugins', self._register_plugins, args=(config,), introspectables=(intr,) )
 
@@ -131,7 +139,8 @@ class PluginsManager(object):
 
             introspectables.append(intr)
 
-            plugin.includeme(config)
+            plugin.service_locator = self.service_locator
+            plugin.includeme(config, self.service_locator)
 
         config.action('apply_plugins', self._apply_plugins, args=(config, plugins),
                       introspectables=introspectables)

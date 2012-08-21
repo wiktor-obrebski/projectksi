@@ -24,8 +24,29 @@ class Plugin(plugins.PluginAbstract):
 
     def description(self):
         return 'Sample plugin created for tests'
-        #config.add_view(hello_world, route_name='test')
 
-    def includeme(self,config):
+    instances = 0
+    def test_message_service(self):
+        class SampleService(object):
+            def __init__(self2):
+                self.instances = self.instances + 1
+
+            def test_message(self2, value):
+                return ("this is test message that will be generated when anybody call "
+                        "'test-message' service, with arg: '%s'. "
+                        "Generated %s time." % (value, self.instances))
+        return SampleService()
+
+    def includeme(self,config,service_locator):
         config.add_route('test', '/test')
+        service_locator.set('test-message-generator', self.test_message_service)
+
+        #this code can be called from any other plugin. class SampleService will be generated
+        #only when anybody really call "sl.get" method - and only one time.
+        gen = service_locator.get('test-message-generator')
+        print(gen.test_message('666'))
+        gen2 = service_locator.get('test-message-generator')
+        print(gen2.test_message('777'))
+        gen3 = service_locator.get('test-message-generator')
+        print(gen3.test_message('888'))
         config.scan()
