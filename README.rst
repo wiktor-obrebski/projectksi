@@ -1,6 +1,8 @@
 projectksi README
 ==================
 
+You can read full documentation on http://docs.projectksi.com/.
+
 Getting Started
 ---------------
 
