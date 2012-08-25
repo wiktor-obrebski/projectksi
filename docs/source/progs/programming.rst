@@ -331,6 +331,12 @@ standard Pyramid extensions. For sample, you can register you own route and view
 If you want use declarative views registration you need remember about calling *config.scan()* method
 at end of *includeme* function.
 
+Debugging plugins
+-----------------
+
+You can use Pyramid debug panel to get some basic information about current loaded plugins. You should
+check "Introspection" section and "Projectksi plugins" group.
+
 How to
 ======
 
