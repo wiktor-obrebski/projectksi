@@ -1,0 +1,9 @@
+#Paths are relative to the 'source file' directories specified in the main config file
+includes:
+    css:
+        - bootstrap.css
+        - bootstrap-responsive.css
+        - projectksi.css
+    javascript:
+        - jquery-1.7.2.js
+        - bootstrap.js

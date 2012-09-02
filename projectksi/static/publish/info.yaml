@@ -1,0 +1,13 @@
+ksipack:
+  css:
+    files: [bootstrap.css, bootstrap-responsive.css, projectksi.css]
+    md5: 832e29a2271cee7395194a9cf7fda7a5
+    output: {gz: ksipack-832e29a2271cee7395194a9cf7fda7a5.min.css.gz, min: ksipack-832e29a2271cee7395194a9cf7fda7a5.min.css,
+      raw: ksipack-832e29a2271cee7395194a9cf7fda7a5.css}
+    size: {gz: 15423, min: 93574, raw: 114387}
+  javascript:
+    files: [jquery-1.7.2.js, bootstrap.js]
+    md5: 23a32186d34f460dc87571bd3c406bcd
+    output: {gz: ksipack-23a32186d34f460dc87571bd3c406bcd.min.js.gz, min: ksipack-23a32186d34f460dc87571bd3c406bcd.min.js,
+      raw: ksipack-23a32186d34f460dc87571bd3c406bcd.js}
+    size: {gz: 47305, min: 169085, raw: 302992}

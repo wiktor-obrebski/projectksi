@@ -1,0 +1,18 @@
+#Main bundle config
+#All paths are relative to this file
+
+#Logging level (Standard Python logging levels: DEBUG, INFO, WARNING or CRITICAL)
+logging: DEBUG
+
+#Specify the directory for bundle YAML files (The files that specify your bundles and their contents)
+bundles: ./projectksi/static/
+
+#Where to output the bundles and bundle info file
+output: ./projectksi/static/publish
+
+#Source files
+css: ./projectksi/static/css/
+javascript: ./projectksi/static/js/
+
+#Bundle names include MD5 hash of contents (E.G. [bundlename]-[md5 hash].js - See bundle info file)
+hashfilenames: true

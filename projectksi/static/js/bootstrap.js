@@ -348,7 +348,7 @@
         this.$element.trigger(e)
         if (e.isDefaultPrevented()) return
         $next.addClass(type)
-        $next[0].offsetWidth // force reflow
+        $next[0].offsetWidth; // force reflow
         $active.addClass(direction)
         $next.addClass(direction)
         this.$element.one($.support.transition.end, function () {
@@ -808,7 +808,7 @@
         this.$backdrop.click($.proxy(this.hide, this))
       }
 
-      if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
+      if (doAnimate) this.$backdrop[0].offsetWidth; // force reflow
 
       this.$backdrop.addClass('in')
 
@@ -1491,7 +1491,7 @@
         element.addClass('active')
 
         if (transition) {
-          element[0].offsetWidth // reflow for transition
+          element[0].offsetWidth; // reflow for transition
           element.addClass('in')
         } else {
           element.removeClass('fade')

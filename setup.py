@@ -24,8 +24,9 @@ setup(name='projectksi',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
-      dependency_links = [
+      dependency_links=[
           'https://github.com/psychowico/pyramid_viewscomposer/tarball/master#egg=pyramid_viewscomposer',
+          'https://github.com/psychowico/Squeezeit/tarball/master#egg=squeezeit',
           #oursql for python 3 version
           'https://launchpad.net/oursql/py3k/py3k-0.9.3/+download/oursql-0.9.3.zip#egg=oursql-0.9.3',
       ],
@@ -40,7 +41,8 @@ setup(name='projectksi',
           'pyramid_debugtoolbar',
           'pyramid_viewscomposer',
           'waitress',
-          'six'
+          'six',
+          'squeezeit'
       ],
       #I'm not stored this list in variable, because PyCharm IDE don't see dependencies in this situation (genius)
       tests_require=[
@@ -53,7 +55,8 @@ setup(name='projectksi',
           'pyramid_debugtoolbar',
           'pyramid_viewscomposer',
           'waitress',
-          'six'
+          'six',
+          'squeezeit',
       ],
       test_suite="projectksi",
       entry_points = """\

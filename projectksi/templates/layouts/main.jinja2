@@ -5,8 +5,9 @@
     <title>Project KSI starting page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le styles -->
-    {{ request.deps.less.tags|safe }}
-    {{ request.deps.top_output|safe }}
+    {% for css in request.css %}
+    <link rel="stylesheet" type="text/css" href="static/{{css}}">
+    {% endfor %}
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -86,7 +87,9 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-{{ request.deps.bottom_output|safe }}
+{% for js in request.js %}
+<script type="text/javascript" src="static/{{js}}"></script>
+{% endfor %}
 
 </body>
 </html>
