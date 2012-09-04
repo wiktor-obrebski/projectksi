@@ -5,18 +5,50 @@ import squeezeit
 import yaml
 import os
 import os.path
+import logging
 from pyramid.settings import asbool
+from lesscss import LessCSS
 
 
 def init_deps(config):
     """ if config *squeezeit.enabled* directive is set to true - it will call *init_squeezeit*
-    method - otherwise *init_raw_deps*
+    method - otherwise *init_raw_deps*. When *projectksi.web_deps.less_compiler.side* directive
+    is set to 'server' will call *compile_less_server_side*, else *compile_less_client_side*
     """
-    squeezeit_enabled = asbool(config.registry.settings.get('squeezeit.enabled', False))
+    s = config.registry.settings
+    squeezeit_enabled = asbool(s.get('projectksi.web_deps.squeezeit.enabled', False))
+    less_side = s.get('projectksi.web_deps.less_compiler.side', 'server')
+
+    if less_side == 'server':
+        compile_less_server_side(config)
+    elif less_side == 'client':
+        compile_less_client_side(config)
+
     if squeezeit_enabled:
         init_squeezeit(config)
     else:
         init_raw_deps(config)
+
+
+def compile_less_server_side(config):
+    try:
+        LessCSS(media_dir='./projectksi/static/css', based=False, compressed=False)
+    except OSError:
+        logging.warning('Can not compiling LESS - lessc not founded in system.')
+
+
+def compile_less_client_side(config):
+    """ Add *less-1.3.0.min.js* to js included (for jinja template) and
+    and register are *.less files from */static/css* for later use in jinja
+    template.
+    """
+    if not hasattr(config.registry, 'include_js'):
+        config.registry.include_js = []
+
+    config.registry.include_js.append('static/js/less-1.3.0.min.js')
+
+    rel_list = rel_dir_list('./projectksi/static/css', 'less')
+    config.registry.include_less = ['/'.join(['static/css', f]) for f in rel_list]
 
 
 def rel_dir_list(dir_name, ext):
@@ -39,7 +71,8 @@ def init_raw_deps(config):
     It use *squeezeit.config* config directive path to find folders with css and js
     files.
     """
-    config_path = config.registry.settings.get('squeezeit.config', '../config.yaml')
+    s = config.registry.settings
+    config_path = s.get('projectksi.web_deps.squeezeit.config', '../config.yaml')
 
     stream = open(config_path, 'r')
     data = yaml.load(stream)
@@ -59,9 +92,9 @@ def init_squeezeit(config):
     Next check their names and prepare it to later include in jinja templates.
     Prepare static view *static* that will serve files from squeezeit output directory.
     """
-    #Confirm the command line arguments exist
-    config_path = config.registry.settings.get('squeezeit.config', '../config.yaml')
-    prefered_version = config.registry.settings.get('squeezeit.prefered_version', 'gz')
+    s = config.registry.settings
+    config_path = s.get('projectksi.web_deps.squeezeit.config', '../config.yaml')
+    prefered_version = s.get('projectksi.web_deps.squeezeit.prefered_version', 'gz')
 
     #Start the processing
     squeezeit.compress(config_path)
@@ -71,8 +104,14 @@ def init_squeezeit(config):
     stream.close()
     publish_path = data['output']
 
-    include_css = []
-    include_js = []
+    try:
+        include_css = config.registry.include_css
+    except AttributeError:
+        include_css = []
+    try:
+        include_js = config.registry.include_js
+    except AttributeError:
+        include_js = []
 
     yaml_files = [f for f in os.listdir(publish_path) if f.endswith('.yaml')]
     for f in yaml_files:

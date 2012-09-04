@@ -1,13 +1,13 @@
 ksipack:
   css:
-    files: [bootstrap.css, bootstrap-responsive.css, projectksi.css]
-    md5: c17dfce9e803cd8a5ac2707517ed176f
-    output: {gz: ksipack-c17dfce9e803cd8a5ac2707517ed176f.min.css.gz, min: ksipack-c17dfce9e803cd8a5ac2707517ed176f.min.css,
-      raw: ksipack-c17dfce9e803cd8a5ac2707517ed176f.css}
-    size: {gz: 15414, min: 93532, raw: 114343}
+    files: [bootstrap.css, bootstrap-responsive.css, projectksi.css, test/projectksi.css]
+    md5: 45744c7946f171c220f89b33676b51ae
+    output: {gz: ksipack-45744c7946f171c220f89b33676b51ae.min.css.gz, min: ksipack-45744c7946f171c220f89b33676b51ae.min.css,
+      raw: ksipack-45744c7946f171c220f89b33676b51ae.css}
+    size: {gz: 15434, min: 93603, raw: 114437}
   javascript:
     files: [jquery-1.7.2.js, bootstrap.js, test.js, test/test2.js]
-    md5: 280faa22c98220242c24d2eb4f8920f6
-    output: {gz: ksipack-280faa22c98220242c24d2eb4f8920f6.min.js.gz, min: ksipack-280faa22c98220242c24d2eb4f8920f6.min.js,
-      raw: ksipack-280faa22c98220242c24d2eb4f8920f6.js}
-    size: {gz: 47402, min: 169370, raw: 303448}
+    md5: c8f692ae24320582ff0960487c12b381
+    output: {gz: ksipack-c8f692ae24320582ff0960487c12b381.min.js.gz, min: ksipack-c8f692ae24320582ff0960487c12b381.min.js,
+      raw: ksipack-c8f692ae24320582ff0960487c12b381.js}
+    size: {gz: 47409, min: 169383, raw: 303461}

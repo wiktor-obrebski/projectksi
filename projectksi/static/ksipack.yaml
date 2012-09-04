@@ -4,6 +4,7 @@ includes:
         - bootstrap.css
         - bootstrap-responsive.css
         - projectksi.css
+        - test/projectksi.css
     javascript:
         - jquery-1.7.2.js
         - bootstrap.js

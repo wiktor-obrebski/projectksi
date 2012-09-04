@@ -10,7 +10,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 setup(name='projectksi',
       version='0.0',
       description='projectksi',
-      long_description=README + '\n\n' +  CHANGES,
+      long_description=README + '\n\n' + CHANGES,
       classifiers=[
         "Programming Language :: Python",
         "Framework :: Pylons",
@@ -42,7 +42,8 @@ setup(name='projectksi',
           'pyramid_viewscomposer',
           'waitress',
           'six',
-          'squeezeit'
+          'squeezeit',
+          'lesscss'
       ],
       #I'm not stored this list in variable, because PyCharm IDE don't see dependencies in this situation (genius)
       tests_require=[
@@ -57,6 +58,7 @@ setup(name='projectksi',
           'waitress',
           'six',
           'squeezeit',
+          'lesscss'
       ],
       test_suite="projectksi",
       entry_points = """\

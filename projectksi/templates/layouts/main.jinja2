@@ -8,6 +8,9 @@
     {% for css in request.css %}
     <link rel="stylesheet" type="text/css" href="{{request.static_url('projectksi:' + css)}}">
     {% endfor %}
+    {% for less in request.less %}
+    <link rel="stylesheet/less" type="text/css" href="{{request.static_url('projectksi:' + less)}}">
+    {% endfor %}
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
