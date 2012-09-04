@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le styles -->
     {% for css in request.css %}
-    <link rel="stylesheet" type="text/css" href="static/{{css}}">
+    <link rel="stylesheet" type="text/css" href="{{request.static_url('projectksi:' + css)}}">
     {% endfor %}
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -88,7 +88,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 {% for js in request.js %}
-<script type="text/javascript" src="static/{{js}}"></script>
+<script type="text/javascript" src="{{request.static_url('projectksi:' + js)}}"></script>
 {% endfor %}
 
 </body>

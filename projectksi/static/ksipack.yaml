@@ -7,3 +7,5 @@ includes:
     javascript:
         - jquery-1.7.2.js
         - bootstrap.js
+        - test.js
+        - test/test2.js
