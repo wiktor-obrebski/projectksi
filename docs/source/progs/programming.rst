@@ -15,7 +15,7 @@ To now we use in code following technologies:
 * jQuery_
 * `Twitter Bootstrap`_
 * LESS_
-* WebDeps_
+* squeezeit_
 * pyramid_viewscomposer_
 * pyramid_debugtoolbar_
 * sqlalchemy_
@@ -72,16 +72,23 @@ LESS
 
 Like in description - this give us language that can generate css in nice way, instead of writing it all static.
 It give our many benefits, their documentation_ describe this nice.
-You can check *static/css/projectksi.less* file, there is all our LESS code for now. This file is including to
-templates by *WebDeps*.
+You can check *static/css/projectksi.less* file, there is all our LESS code for now.
 
 .. _documentation: http://lesscss.org/
 
-WebDeps
--------
+squeezeit
+---------
 
-WebDeps is a Python library writed by *Nando Florestan*. It help us managing js, css and less libraries.
-On our site you can found :ref:`compiled documentation <web-deps>` for it.
+.. note::
+    Squeezeit - Python CSS and Javascript minifier Copyright (C) 2011 Sam Rudge
+
+**squeezeit** is a Python library writed by *Sam Rudge*. It help us managing js, css and less libraries.
+It was written at python2, but I made a bridge to python3 version, `fallow this link`_ to read more.
+It minifying, combining and gzip'ing bundles of Javascript and CSS files. It is critical for lower
+our site needed requests and download less data - and have happy users. There you can read more about
+:ref:`our squeezeit implementation <web-deps>`.
+
+.. _`fallow this link`: https://github.com/psychowico/Squeezeit
 
 
 pyramid_viewscomposer
@@ -114,7 +121,7 @@ sqlalchemy
 Most popular ORM for python developers. We use it in rather default way. Engine object is created from config file,
 in our program *main* method, session are prepared in *projectksi.models.tables* submodule.
 
-.. code-block: python
+.. code-block:: python
 
     DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 
@@ -339,50 +346,6 @@ check "Introspection" section and "Projectksi plugins" group.
 
 How to
 ======
-
-Add css, js or less library to template
----------------------------------------
-
-First you need to make sure, that library what you need is included in *core/webdeps_extend.py* list, in
-"definitions" variable. If not, you should extend it. Let assume that you want add *"super.plugin.js"* library
-to you template and you added this file to our */static/js* directory.
-
-.. code-block:: python
-
-    definitions = {
-        'js'    :   {
-            'less'      : '/static/js/less-1.3.0.min.js',
-            'jquery'    : ('/static/js/jquery-1.7.2.js', '/static/js/jquery-1.7.2.min.js'),
-            'bootstrap' : ('/static/js/bootstrap.js', '/static/js/bootstrap.min.js'),
-            #here we added our code
-            'super-plugin' : '/static/js/super.plugin.js',
-        },
-        'less'  :   {
-            'projectksi': 'static/css/projectksi.less'
-        },
-        'css'   :   {
-            'bootstrap' : ('/static/css/bootstrap.css', '/static/css/bootstrap.min.css'),
-            'bootstrap-responsive' : ('/static/css/bootstrap-responsive.css', '/static/css/bootstrap-responsive.min.css')
-        }
-    }
-
-Like you can see, I called our library 'super-plugin'. This name is my random idea, it can be called in any way,
-you will use this unique name later, in you template. Now you should restart you server, if it is running.
-
-Next you should open you template file and add line:
-
-.. code-block:: python
-
-    {{ include_js('super-plugin') }}
-
-You must use one of three function: *include_js*, *include_css*, *include_less*. You can write few libraries keys,
-after comma:
-
-.. code-block:: python
-
-    {{ include_js('super-plugin, jquery, bootstrap') }}
-
-All css and less files will be added in site header - , all js files - in footer, to make site render faster.
 
 Fetching data from database in your views
 -----------------------------------------
