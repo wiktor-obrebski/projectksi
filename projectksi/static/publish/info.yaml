@@ -7,7 +7,7 @@ ksipack:
     size: {gz: 15434, min: 93603, raw: 114437}
   javascript:
     files: [jquery-1.7.2.js, bootstrap.js, test.js, test/test2.js]
-    md5: c8f692ae24320582ff0960487c12b381
-    output: {gz: ksipack-c8f692ae24320582ff0960487c12b381.min.js.gz, min: ksipack-c8f692ae24320582ff0960487c12b381.min.js,
-      raw: ksipack-c8f692ae24320582ff0960487c12b381.js}
-    size: {gz: 47409, min: 169383, raw: 303461}
+    md5: c5ff2184226a12d2a912381f827b9ea7
+    output: {gz: ksipack-c5ff2184226a12d2a912381f827b9ea7.min.js.gz, min: ksipack-c5ff2184226a12d2a912381f827b9ea7.min.js,
+      raw: ksipack-c5ff2184226a12d2a912381f827b9ea7.js}
+    size: {gz: 47402, min: 169370, raw: 303447}
