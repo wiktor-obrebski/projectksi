@@ -81,8 +81,8 @@ def init_raw_deps(config, dep_pathes):
     """
     css_static_path = os.path.relpath(dep_pathes['css'], './projectksi')
     js_static_path = os.path.relpath(dep_pathes['javascript'], './projectksi')
-    config.add_static_view('develop-css', css_static_path, cache_max_age=3600)
-    config.add_static_view('develop-js', js_static_path, cache_max_age=3600)
+    config.add_static_view('develop-css', css_static_path, cache_max_age=0)
+    config.add_static_view('develop-js', js_static_path, cache_max_age=0)
 
     css = load_file_names_from_yaml(dep_pathes['bundles'], 'css')
     js = load_file_names_from_yaml(dep_pathes['bundles'], 'javascript')
