@@ -347,6 +347,27 @@ check "Introspection" section and "Projectksi plugins" group.
 How to
 ======
 
+Adding new js/css/less code
+---------------------------
+
+To add new js code first you should add new file in *projectksi/static/js*. Try choose name that
+describe good planned code behaviour. Next open one of YAML bundle file (from *projectksi/static*)
+and add your new file to list.
+
+.. code-block:: yaml
+
+    #Paths are relative to the 'source file' directories specified in the main config file
+    includes:
+        css:
+            ...
+            - new-test-less.css
+        javascript:
+            ...
+            - new-test-file.js
+
+In case of less files you need at to list your file name, but with changed extension (to *css*).
+Next restart server to see effects.
+
 Fetching data from database in your views
 -----------------------------------------
 

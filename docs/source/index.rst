@@ -14,6 +14,7 @@ Contents:
     about
     orgs/index
     progs/programming
+    progs/squeezeit-implementation
     contact
 
 
