@@ -1,9 +1,6 @@
 """ In this module we have all code related with page deps - js, css and less loading.
 """
 
-#TODO: wersja debug nie powinna przeszukiwac folderow, ale takze korzystac z listy
-#z plikow "*.yaml" - inaczej coś co zadziała w debug nie zadziala w production.
-
 import squeezeit
 import yaml
 import os
