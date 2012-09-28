@@ -79,6 +79,13 @@ files, shoudn't be used on production server.
 .. _CoffeeScriptRedux: https://github.com/michaelficarra/CoffeeScriptRedux/
 .. _`source maps`: http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
 
+
+CoffeeScriptRedux installation
+------------------------------
+
+You should install CoffeeScriptRedux_ fallowing their page instructions. Next, you should
+set *projectksi.web_deps.coffee_compiler.path* configuration directive to show you own pathes.
+
 Minifying, combining and gzip’ing
 =================================
 
