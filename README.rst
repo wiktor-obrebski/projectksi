@@ -22,6 +22,24 @@ Next you should clone project to this directory and run default setup.py file::
         cd projectksi
         ../bin/python setup.py develop
 
+You need two additional dependencies in system to make our building process working correctly.
+It will be compiler for LESS_ files and compiler for COFFEE_ files. First you should install
+'node-less' package. It will be needed in 'production' environment. On Ubuntu it should work:
+
+    sudo apt-get install node-less
+
+Next you will need CoffeeScriptRedux_. Download it and fallow their github page instructions.
+At end you need tell our builder where their *bin/coffee* file is. Easiest way is create a link
+to it. If you are in main "CoffeeScriptRedux" directory, you can create it by:
+
+    sudo ln -s ./bin/coffee /usr/bin/coffee-redux-comp
+
+Or by modify *projectksi.web_deps.coffee_compiler.path* project configuration directive.
+
+.. _LESS: http://lesscss.org/
+.. _COFFEE: http://coffeescript.org/
+.. _CoffeeScriptRedux: https://github.com/michaelficarra/CoffeeScriptRedux/
+
 Project is ready to go. When you want run it in development mode try::
 
     ../bin/pserve development.ini

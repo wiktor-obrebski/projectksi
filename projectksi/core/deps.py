@@ -101,6 +101,9 @@ monitor_dictionary = {}
 
 
 def debug_watch_coffee_files(config, dep_pathes):
+    """ It will create new thread that will be checking in interval of one second
+    for changes in our coffee files - and recompile it to js when their changed/
+    """
     s = config.registry.settings
     compiler_path = s.get('projectksi.web_deps.coffee_compiler.path', '__coffee')
 
@@ -134,7 +137,7 @@ def debug_watch_coffee_files(config, dep_pathes):
 
 def compile_coffee_script(config, dep_pathes, include_source_maps=False):
     """ Run coffee-script compiler to compile all coffee scripts,
-    add them to "include_js" list and generate source maps for them.
+    add them to "include_compiled_js" list and eventually generate source maps for them.
     """
     include_js = []
     s = config.registry.settings
