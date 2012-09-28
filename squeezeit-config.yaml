@@ -13,6 +13,10 @@ output: ./projectksi/static/publish
 #Source files
 css: ./projectksi/static/css/
 javascript: ./projectksi/static/js/
+less: ./projectksi/static/less/
+coffee: ./projectksi/static/coffee/
+lessCompileOutput: ./projectksi/static/css/compiled_less/
+coffeeCompileOutput: ./projectksi/static/coffee/compiled/
 
 #Bundle names include MD5 hash of contents (E.G. [bundlename]-[md5 hash].js - See bundle info file)
 hashfilenames: true

@@ -3,10 +3,13 @@ includes:
     css:
         - bootstrap.css
         - bootstrap-responsive.css
-        - projectksi.css
-        - test/projectksi.css
     javascript:
         - jquery-1.7.2.js
         - bootstrap.js
-        - test.js
-        - test/test2.js
+    coffee:
+        - test.coffee
+        - test/nexttest.coffee
+    less:
+        - projectksi.less
+        - test/projectksi2.less
+        - project_ksi3.less

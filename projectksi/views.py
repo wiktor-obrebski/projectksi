@@ -1,19 +1,12 @@
+from pyramid.response import Response
 from pyramid_viewscomposer.decorators import compose_view_config
 from projectksi.models import tables
 from projectksi.models.tables import DBSession
-#from projectksi import Resource
+from pyramid.view import view_config
 
-import logging
 
 @compose_view_config(route_name='home', renderer='test_template.jinja2')
 def my_view(request):
     char = DBSession.query(tables.Character).first()
     val = char.user
-    return {'project':val}
-
-# @compose_view_config(name='second', renderer='test_template.jinja2')
-# def my_view2(request):
-#     char = DBSession.query(tables.Character).first()
-#     val = char.name
-
-#     return {'project':val}
+    return {'project': val}

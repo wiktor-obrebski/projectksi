@@ -9,6 +9,7 @@ def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
     config = Configurator(settings=settings)
+
     plugins_manager = PluginsManager(config)
     config.registry.plugins = plugins_manager
     deps.init_deps(config)

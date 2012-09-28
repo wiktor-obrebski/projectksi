@@ -27,6 +27,8 @@ setup(name='projectksi',
       dependency_links=[
           'https://github.com/psychowico/pyramid_viewscomposer/tarball/master#egg=pyramid_viewscomposer',
           'https://github.com/psychowico/Squeezeit/tarball/master#egg=squeezeit',
+          #my fixed version of lesscss python compiler wrapper
+          'https://github.com/psychowico/lesscss/tarball/master#egg=lesscss',
           #oursql for python 3 version
           'https://launchpad.net/oursql/py3k/py3k-0.9.3/+download/oursql-0.9.3.zip#egg=oursql-0.9.3',
       ],
