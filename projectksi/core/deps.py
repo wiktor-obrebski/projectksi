@@ -20,7 +20,9 @@ def init_deps(config):
     s = config.registry.settings
     squeezeit_enabled = asbool(s.get('projectksi.web_deps.squeezeit.enabled', False))
     less_side = s.get('projectksi.web_deps.less_compiler.side', 'server')
-    coffee_side = s.get('projectksi.web_deps.coffee_compiler.side', 'server')
+
+    coffee_source_maps = asbool(s.get('projectksi.web_deps.coffee_compiler.sourcemaps', False))
+    coffee_recompile = asbool(s.get('projectksi.web_deps.coffee_compiler.autorecompile', False))
 
     config_path = s.get('projectksi.web_deps.squeezeit.config', '../config.yaml')
 
@@ -33,11 +35,9 @@ def init_deps(config):
     elif less_side == 'client':
         compile_less_client_side(config, dep_pathes)
 
-    if coffee_side == 'client':
-        compile_coffee_script(config, dep_pathes, False)
+    compile_coffee_script(config, dep_pathes, coffee_source_maps)
+    if coffee_recompile:
         debug_watch_coffee_files(config, dep_pathes)
-    elif coffee_side == 'server':
-        compile_coffee_script(config, dep_pathes, False)
 
     if squeezeit_enabled:
         init_squeezeit(config, dep_pathes)

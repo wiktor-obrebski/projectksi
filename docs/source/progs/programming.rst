@@ -2,9 +2,6 @@
 Programming
 ===========
 
-.. note::
-    This file will be extend by psychowico in short time.
-
 Used technologies
 =================
 
@@ -347,7 +344,7 @@ check "Introspection" section and "Projectksi plugins" group.
 How to
 ======
 
-Adding new js/css/less code
+Adding new js/css/less/coffee code
 ---------------------------
 
 To add new js code first you should add new file in *projectksi/static/js*. Try choose name that
@@ -364,9 +361,15 @@ and add your new file to list.
         javascript:
             ...
             - new-test-file.js
+        less:
+            ...
+            - new-less.less
+        coffee:
+            ...
+            - foo-coffee.coffee
 
-In case of less files you need at to list your file name, but with changed extension (to *css*).
-Next restart server to see effects.
+
+You can use subdirectories too. Next restart server to see effects.
 
 Fetching data from database in your views
 -----------------------------------------

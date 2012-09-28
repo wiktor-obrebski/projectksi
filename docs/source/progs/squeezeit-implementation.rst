@@ -4,11 +4,12 @@
 Web dependencies
 ================
 
-Our site need many depends files - for javascript and css. To make load faster and at the same time
-- not inhibit our work web-depends code was prepared. Most of it you can found in
+Our site need many depends files - for javascript and css. To make loading faster and at the
+same time - not inhibit our work web-depends code was prepared. Most of it you can found in
 "*projectksi.core.deps*" module. It is responsible for:
 
  - `compile less files to css`_
+ - `compile coffee files to js`_
  - `minifying, combining and gzip’ing`_ css
  - `minifying, combining and gzip’ing`_ js
 
@@ -21,7 +22,7 @@ Like `LESS official website`_ say - less files can be compile in one of two way:
   - client side (by LESS javascript compiler)
   - server side (by *lessc* tool)
 
-Both are diffrent and both are useful. You can choose way projectksi LESS is compiling by
+Both are diffrent and both are useful. You can choose way than projectksi LESS is compiling by
 set *projectksi.web_deps.less_compiler.side* to *client* or *server* value. To compile LESS
 files in server side you need have *lessc* installed. You can found instruction how to do this
 on LESS website. On Ubuntu it will:
@@ -58,6 +59,26 @@ css. To use this mode you need *leesc* tool installed in your system - from LESS
 
 This mode will be useful in production - should not be used in development time.
 
+Compile coffee files to js
+==========================
+
+To compile *.coffee* files we use CoffeeScriptRedux_ compiler. It give us possibility to automate
+generate js to coffee `source maps`_ files. You can control source coffee directory and output coffee
+directory by modify configuration in `Main config.yaml`_ file. You should remember, that output directory
+should be source subdirectory - because *.coffee* files need be served by this same static subdomain.
+
+Compiling process can be configured by two ways.
+ First you can set *projectksi.web_deps.coffee_compiler.sourcemaps* configuration
+directive to *false* or *true*. When sourcemaps mode is on compiling process will generate not
+only *js* files, but source maps files to. It will have name like *js* generated files, but with *.map* extension. Code will
+automatically add needed comment line to js files.
+ Next by changing *projectksi.web_deps.coffee_compiler.autorecompile* directive you can control than
+*coffee* files should be automatically recompiled after changes. It create another thread and observe
+files, shoudn't be used on production server.
+
+.. _CoffeeScriptRedux: https://github.com/michaelficarra/CoffeeScriptRedux/
+.. _`source maps`: http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
+
 Minifying, combining and gzip’ing
 =================================
 
@@ -82,18 +103,21 @@ There default pathes are configured:
     #Source files
     css: ./projectksi/static/css/
     javascript: ./projectksi/static/js/
+    coffee: ./projectksi/static/coffee/
+    lessCompileOutput: ./projectksi/static/css/compiled_less/
+    coffeeCompileOutput: ./projectksi/static/coffee/compiled/
 
     #Bundle names include MD5 hash of contents (E.G. [bundlename]-[md5 hash].js - See bundle info file)
     hashfilenames: true
 
-This pathes is not likely to change. You just need remember to add all new *js*, *css* or *less* (but with
-.css extension) to yaml bundle files - or they won't be included in pages layout.
+This pathes is not likely to change. You just need remember to add all new *js*, *css*, *less* and
+*coffee* files to yaml bundle files - or they won't be included in pages layout.
 
 Another configuration
 ---------------------
 
 To turn off *squeezeit* you need set *projectksi.web_deps.squeezeit.enabled* configuration
-directive to *false*. Files will be serve single, in orginal, not minifying state. You should
+directive to *false*. Files will be serve single, in original, not minifying state. You should
 avoid this at production server.
 
 You can set *projectksi.web_deps.squeezeit.prefered_version* configuration directive to one of three
