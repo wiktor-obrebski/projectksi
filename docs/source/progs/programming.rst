@@ -12,6 +12,7 @@ To now we use in code following technologies:
 * jQuery_
 * `Twitter Bootstrap`_
 * LESS_
+* COFFEE_
 * squeezeit_
 * pyramid_viewscomposer_
 * pyramid_debugtoolbar_
@@ -69,9 +70,23 @@ LESS
 
 Like in description - this give us language that can generate css in nice way, instead of writing it all static.
 It give our many benefits, their documentation_ describe this nice.
-You can check *static/css/projectksi.less* file, there is all our LESS code for now.
+
+You can check *static/less* directory, there is all our LESS code.
 
 .. _documentation: http://lesscss.org/
+
+COFFEE
+------
+
+.. note::
+    CoffeeScript is a little language that compiles into JavaScript.
+
+Coffee script is simple way to make your javascript development easier, cleaner and more fun.
+Code in coffee is more readable, shorter and performant. Check `coffee documentation`_ to learn it.
+
+You can check *static/coffee* directory, there is all our COFFEE code.
+
+.. _`coffee documentation`: http://coffeescript.org/
 
 squeezeit
 ---------
