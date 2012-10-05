@@ -6,13 +6,13 @@ You can read full documentation on http://docs.projectksi.com/.
 Getting Started
 ---------------
 
-I assume that you have *virtualenv* and *easy_install* installed in you Python.
+I assume that you have *virtualenv* and *easy_install* installed in your Python.
 
 
 First you need use virtualenv package to create a virtual environment.
 To do so, invoke the following::
 
-    $ virtualenv --no-site-packages {targetDirectoryName}
+    $ virtualenv --no-site-packages --python=/usr/bin/python3.2 {targetDirectoryName} 
     cd {targetDirectoryName}
 
 Parameter *--no-site-packages* is deprecated and used as default in new version of *virtualenv*.
@@ -28,7 +28,7 @@ It will be compiler for LESS_ files and compiler for COFFEE_ files. First you sh
 
     sudo apt-get install node-less
 
-Next you will need CoffeeScriptRedux_. Download it and fallow their github page instructions.
+Next you will need CoffeeScriptRedux_. Download it and follow their github page instructions.
 At end you need tell our builder where their *bin/coffee* file is. Easiest way is create a link
 to it. If you are in main "CoffeeScriptRedux" directory, you can create it by:
 
